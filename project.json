@@ -1,0 +1,24 @@
+{
+  "overview": "YasinForge is an immersive 3D WebGL agency website for web development studio YasinForge, founded by Bilal Yasin. Features scroll-driven 3D animations, a portfolio showcase with individual project pages, client testimonials, a blog with case studies and standalone articles, and an admin dashboard for full content management.",
+  "features": [
+    "Immersive 3D WebGL objects that react to scrolling",
+    "Portfolio showcase with individual project pages",
+    "Client testimonials on home page, project pages, and dedicated page",
+    "Blog with case studies tied to projects and standalone articles",
+    "Admin dashboard with full CRUD, feature toggles, and tag management",
+    "Internet Identity protected admin access",
+    "Contact form with WhatsApp and email links"
+  ],
+  "category": "agency-portfolio",
+  "tags": [
+    "agency",
+    "portfolio",
+    "3d",
+    "webgl",
+    "blog",
+    "testimonials",
+    "admin",
+    "internet-computer"
+  ],
+  "last_updated": "2026-05-04T16:21:51.323Z"
+}

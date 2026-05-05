@@ -1,0 +1,148 @@
+type TestimonialInput = 
+ record {
+   clientName: text;
+   clientTitle: text;
+   company: text;
+   featured: bool;
+   imageUrl: text;
+   projectId: opt nat;
+   quote: text;
+   rating: nat;
+   tags: vec text;
+ };
+type TestimonialId = nat;
+type Testimonial = 
+ record {
+   clientName: text;
+   clientTitle: text;
+   company: text;
+   createdAt: int;
+   featured: bool;
+   id: TestimonialId;
+   imageUrl: text;
+   projectId: opt nat;
+   quote: text;
+   rating: nat;
+   tags: vec text;
+ };
+type SubmissionId = nat;
+type ProjectInput = 
+ record {
+   category: text;
+   description: text;
+   imageUrl: text;
+   techStack: vec text;
+   title: text;
+ };
+type ProjectId = nat;
+type Project = 
+ record {
+   category: text;
+   createdAt: int;
+   description: text;
+   id: ProjectId;
+   imageUrl: text;
+   techStack: vec text;
+   title: text;
+ };
+type PostType = 
+ variant {
+   caseStudy;
+   standalone;
+ };
+type ContactSubmission = 
+ record {
+   createdAt: int;
+   email: text;
+   id: SubmissionId;
+   name: text;
+   projectDetails: text;
+   "service": text;
+ };
+type ContactInput = 
+ record {
+   email: text;
+   name: text;
+   projectDetails: text;
+   "service": text;
+ };
+type BlogPostInput = 
+ record {
+   content: text;
+   excerpt: text;
+   featured: bool;
+   imageUrl: text;
+   postType: PostType;
+   projectId: opt nat;
+   slug: text;
+   tags: vec text;
+   title: text;
+ };
+type BlogPostId = nat;
+type BlogPost = 
+ record {
+   content: text;
+   createdAt: int;
+   excerpt: text;
+   featured: bool;
+   id: BlogPostId;
+   imageUrl: text;
+   postType: PostType;
+   projectId: opt nat;
+   slug: text;
+   tags: vec text;
+   title: text;
+ };
+service : {
+  addBlogPost: (input: BlogPostInput) -> (variant {
+                                            err: text;
+                                            ok: BlogPost;
+                                          });
+  addProject: (input: ProjectInput) -> (Project);
+  addTestimonial: (input: TestimonialInput) ->
+   (variant {
+      err: text;
+      ok: Testimonial;
+    });
+  deleteBlogPost: (id: nat) -> (variant {
+                                  err: text;
+                                  ok;
+                                });
+  deleteProject: (id: ProjectId) -> (bool);
+  deleteSubmission: (id: SubmissionId) -> (bool);
+  deleteTestimonial: (id: nat) -> (variant {
+                                     err: text;
+                                     ok;
+                                   });
+  featureBlogPost: (id: nat, featured: bool) -> (variant {
+                                                   err: text;
+                                                   ok;
+                                                 });
+  featureTestimonial: (id: nat, featured: bool) -> (variant {
+                                                      err: text;
+                                                      ok;
+                                                    });
+  getBlogPost: (slug: text) -> (opt BlogPost) query;
+  getBlogPosts: () -> (vec BlogPost) query;
+  getBlogPostsForProject: (projectId: nat) -> (vec BlogPost) query;
+  getFeaturedBlogPosts: () -> (vec BlogPost) query;
+  getFeaturedTestimonials: () -> (vec Testimonial) query;
+  getProject: (id: ProjectId) -> (opt Project) query;
+  getProjects: () -> (vec Project) query;
+  getSubmissions: () -> (vec ContactSubmission) query;
+  getTestimonials: () -> (vec Testimonial) query;
+  getTestimonialsForProject: (projectId: nat) -> (vec Testimonial) query;
+  isAdmin: () -> (bool) query;
+  submitContact: (input: ContactInput) -> (ContactSubmission);
+  updateBlogPost: (id: nat, input: BlogPostInput) ->
+   (variant {
+      err: text;
+      ok: BlogPost;
+    });
+  updateProject: (id: ProjectId, input: ProjectInput) -> (opt Project);
+  updateTestimonial: (id: nat, input: TestimonialInput) ->
+   (variant {
+      err: text;
+      ok: Testimonial;
+    });
+}

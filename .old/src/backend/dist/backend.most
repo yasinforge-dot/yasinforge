@@ -1,0 +1,83 @@
+// Version: 1.0.0
+type BlogPostId__27391268 = Nat;
+type BlogPost__675388759 =
+  {
+    content : Text;
+    createdAt : Int;
+    excerpt : Text;
+    featured : Bool;
+    id : BlogPostId__27391268;
+    imageUrl : Text;
+    postType : PostType__676005377;
+    projectId : ?Nat;
+    slug : Text;
+    tags : [Text];
+    title : Text
+  };
+type ContactSubmission__672001729 =
+  {
+    createdAt : Int;
+    email : Text;
+    id : SubmissionId__935509625;
+    name : Text;
+    projectDetails : Text;
+    service : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type PostType__676005377 = {#caseStudy; #standalone};
+type ProjectId__396084185 = Nat;
+type Project__781792388 =
+  {
+    category : Text;
+    createdAt : Int;
+    description : Text;
+    id : ProjectId__396084185;
+    imageUrl : Text;
+    techStack : [Text];
+    title : Text
+  };
+type SubmissionId__935509625 = Nat;
+type TestimonialId__1026810156 = Nat;
+type Testimonial__348956362 =
+  {
+    clientName : Text;
+    clientTitle : Text;
+    company : Text;
+    createdAt : Int;
+    featured : Bool;
+    id : TestimonialId__1026810156;
+    imageUrl : Text;
+    projectId : ?Nat;
+    quote : Text;
+    rating : Nat;
+    tags : [Text]
+  };
+actor {
+  stable blogPosts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?BlogPost__675388759]];
+      var elementIndex : Nat__490723111
+    };
+  stable projects :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Project__781792388]];
+      var elementIndex : Nat__490723111
+    };
+  stable seedResult : (Nat, Nat);
+  stable submissions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ContactSubmission__672001729]];
+      var elementIndex : Nat__490723111
+    };
+  stable tbCounters : {var nextBlogPostId : Nat; var nextTestimonialId : Nat};
+  stable testimonials :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Testimonial__348956362]];
+      var elementIndex : Nat__490723111
+    }
+};

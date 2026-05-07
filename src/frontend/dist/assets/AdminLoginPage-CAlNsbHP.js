@@ -1,5 +1,5 @@
-import { e as useInternetIdentity, b as useNavigate, r as reactExports, j as jsxRuntimeExports } from "./index-D0yZ9B68.js";
-import { m as motion, B as Button } from "./proxy-BcgAcmJN.js";
+import { e as useInternetIdentity, b as useNavigate, r as reactExports, j as jsxRuntimeExports } from "./index-Cdk8ITCB.js";
+import { m as motion, B as Button } from "./proxy-DTk2W0P-.js";
 function AdminLoginPage() {
   const { loginStatus, login, isAuthenticated } = useInternetIdentity();
   const navigate = useNavigate();

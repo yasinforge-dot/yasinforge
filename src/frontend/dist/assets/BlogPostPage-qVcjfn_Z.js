@@ -1,11 +1,11 @@
-import { a as useParams, r as reactExports, j as jsxRuntimeExports, L as Link } from "./index-D0yZ9B68.js";
-import { N as Navigation, F as Footer } from "./Navigation-DIE_Fx6h.js";
-import { y as useBlogPost, j as useBlogPosts, S as Skeleton, B as Badge } from "./useBackend-CzoG8yy-.js";
-import { B as Button, m as motion } from "./proxy-BcgAcmJN.js";
-import { B as BookOpen } from "./book-open-BC0noi5b.js";
-import { A as ArrowLeft } from "./arrow-left-DS0opQrk.js";
-import { C as Calendar, T as Tag } from "./tag-D5GM9GjY.js";
-import { E as ExternalLink } from "./external-link-AjrMEc8i.js";
+import { a as useParams, r as reactExports, j as jsxRuntimeExports, L as Link } from "./index-Cdk8ITCB.js";
+import { N as Navigation, F as Footer } from "./Navigation-BeRgmhB4.js";
+import { y as useBlogPost, j as useBlogPosts, S as Skeleton, B as Badge } from "./useBackend-polHKaev.js";
+import { B as Button, m as motion } from "./proxy-DTk2W0P-.js";
+import { B as BookOpen } from "./book-open-C3OZvWhn.js";
+import { A as ArrowLeft } from "./arrow-left-eeMvleno.js";
+import { C as Calendar, T as Tag } from "./tag-CRynnWqg.js";
+import { E as ExternalLink } from "./external-link-BzpvSdou.js";
 import "./vanilla-wjP-HMWV.js";
 function formatDate(createdAt) {
   return new Date(Number(createdAt) / 1e6).toLocaleDateString("en-US", {

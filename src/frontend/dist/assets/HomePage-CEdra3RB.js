@@ -1,11 +1,11 @@
-import { j as jsxRuntimeExports, r as reactExports, L as Link, u as ue } from "./index-D0yZ9B68.js";
-import { u as useScrollProgress, N as Navigation, F as Footer, a as useScrollStore, S as ShieldCheck } from "./Navigation-DIE_Fx6h.js";
-import { C as Canvas, u as useFrame, a as CodeXml, Z as Zap, L as Layers, M as MessageSquareQuote } from "./react-three-fiber.esm-oFFQvPzT.js";
-import { c as createLucideIcon, u as useProjects, B as Badge, S as Skeleton, a as useFeaturedTestimonials, b as useTestimonials, d as useSubmitContact } from "./useBackend-CzoG8yy-.js";
-import { r as resolveElements, m as motion, B as Button } from "./proxy-BcgAcmJN.js";
-import { u as useForm } from "./index.esm-D49b5EuF.js";
-import { A as ArrowRight } from "./arrow-right-MsaGTgjp.js";
-import { Q as Quote, S as Star } from "./star-51PYhvQz.js";
+import { j as jsxRuntimeExports, r as reactExports, L as Link, u as ue } from "./index-Cdk8ITCB.js";
+import { u as useScrollProgress, N as Navigation, F as Footer, a as useScrollStore, S as ShieldCheck } from "./Navigation-BeRgmhB4.js";
+import { u as useFrame, M as MeshPhysicalMaterial, C as Canvas, a as CodeXml, Z as Zap, L as Layers, b as MessageSquareQuote } from "./react-three-fiber.esm-CaH0EOX6.js";
+import { c as createLucideIcon, u as useProjects, B as Badge, S as Skeleton, a as useFeaturedTestimonials, b as useTestimonials, d as useSubmitContact } from "./useBackend-polHKaev.js";
+import { r as resolveElements, m as motion, B as Button } from "./proxy-DTk2W0P-.js";
+import { u as useForm } from "./index.esm-Q7k4iUVc.js";
+import { A as ArrowRight } from "./arrow-right-BswX-xeY.js";
+import { Q as Quote, S as Star } from "./star-D0idqhvT.js";
 import "./vanilla-wjP-HMWV.js";
 /**
  * @license lucide-react v0.511.0 - ISC
@@ -131,6 +131,79 @@ function Layout({
     !hideFooter && /* @__PURE__ */ jsxRuntimeExports.jsx(Footer, {})
   ] });
 }
+function _extends() {
+  return _extends = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
+    }
+    return n;
+  }, _extends.apply(null, arguments);
+}
+var distort = "#define GLSLIFY 1\nvec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}float snoise(vec3 v){const vec2 C=vec2(1.0/6.0,1.0/3.0);const vec4 D=vec4(0.0,0.5,1.0,2.0);vec3 i=floor(v+dot(v,C.yyy));vec3 x0=v-i+dot(i,C.xxx);vec3 g=step(x0.yzx,x0.xyz);vec3 l=1.0-g;vec3 i1=min(g.xyz,l.zxy);vec3 i2=max(g.xyz,l.zxy);vec3 x1=x0-i1+C.xxx;vec3 x2=x0-i2+C.yyy;vec3 x3=x0-D.yyy;i=mod289(i);vec4 p=permute(permute(permute(i.z+vec4(0.0,i1.z,i2.z,1.0))+i.y+vec4(0.0,i1.y,i2.y,1.0))+i.x+vec4(0.0,i1.x,i2.x,1.0));float n_=0.142857142857;vec3 ns=n_*D.wyz-D.xzx;vec4 j=p-49.0*floor(p*ns.z*ns.z);vec4 x_=floor(j*ns.z);vec4 y_=floor(j-7.0*x_);vec4 x=x_*ns.x+ns.yyyy;vec4 y=y_*ns.x+ns.yyyy;vec4 h=1.0-abs(x)-abs(y);vec4 b0=vec4(x.xy,y.xy);vec4 b1=vec4(x.zw,y.zw);vec4 s0=floor(b0)*2.0+1.0;vec4 s1=floor(b1)*2.0+1.0;vec4 sh=-step(h,vec4(0.0));vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;vec3 p0=vec3(a0.xy,h.x);vec3 p1=vec3(a0.zw,h.y);vec3 p2=vec3(a1.xy,h.z);vec3 p3=vec3(a1.zw,h.w);vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));p0*=norm.x;p1*=norm.y;p2*=norm.z;p3*=norm.w;vec4 m=max(0.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.0);m=m*m;return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));}";
+class DistortMaterialImpl extends MeshPhysicalMaterial {
+  constructor(parameters = {}) {
+    super(parameters);
+    this.setValues(parameters);
+    this._time = {
+      value: 0
+    };
+    this._distort = {
+      value: 0.4
+    };
+    this._radius = {
+      value: 1
+    };
+  }
+  // FIXME Use `THREE.WebGLProgramParametersWithUniforms` type when able to target @types/three@0.160.0
+  onBeforeCompile(shader) {
+    shader.uniforms.time = this._time;
+    shader.uniforms.radius = this._radius;
+    shader.uniforms.distort = this._distort;
+    shader.vertexShader = `
+      uniform float time;
+      uniform float radius;
+      uniform float distort;
+      ${distort}
+      ${shader.vertexShader}
+    `;
+    shader.vertexShader = shader.vertexShader.replace("#include <begin_vertex>", `
+        float updateTime = time / 50.0;
+        float noise = snoise(vec3(position / 2.0 + updateTime * 5.0));
+        vec3 transformed = vec3(position * (noise * pow(distort, 2.0) + radius));
+        `);
+  }
+  get time() {
+    return this._time.value;
+  }
+  set time(v) {
+    this._time.value = v;
+  }
+  get distort() {
+    return this._distort.value;
+  }
+  set distort(v) {
+    this._distort.value = v;
+  }
+  get radius() {
+    return this._radius.value;
+  }
+  set radius(v) {
+    this._radius.value = v;
+  }
+}
+const MeshDistortMaterial = /* @__PURE__ */ reactExports.forwardRef(({
+  speed = 1,
+  ...props
+}, ref) => {
+  const [material] = reactExports.useState(() => new DistortMaterialImpl());
+  useFrame((state) => material && (material.time = state.clock.elapsedTime * speed));
+  return /* @__PURE__ */ reactExports.createElement("primitive", _extends({
+    object: material,
+    ref,
+    attach: "material"
+  }, props));
+});
 function ScrollCanvas({
   children,
   className,
@@ -189,6 +262,499 @@ function ParticleField({ count = 120 }) {
     )
   ] });
 }
+function TorusKnotMesh() {
+  const meshRef = reactExports.useRef(null);
+  const progress = useScrollStore((s) => s.progress);
+  const progressRef = reactExports.useRef(progress);
+  progressRef.current = progress;
+  useFrame(({ clock }) => {
+    if (!meshRef.current) return;
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
+    const t = clock.getElapsedTime();
+    const p = progressRef.current;
+    meshRef.current.rotation.x = t * 0.18 + p * Math.PI;
+    meshRef.current.rotation.y = t * 0.28 + p * Math.PI * 1.5;
+    meshRef.current.position.y = Math.sin(t * 0.7) * 0.35;
+    const scale = 1 + p * 0.4;
+    meshRef.current.scale.setScalar(scale);
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { ref: meshRef, position: [1.5, 0, 0], children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("torusKnotGeometry", { args: [0.85, 0.28, 180, 24, 2, 3] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "meshStandardMaterial",
+      {
+        color: "#f97316",
+        emissive: "#f97316",
+        emissiveIntensity: 0.45,
+        metalness: 0.8,
+        roughness: 0.15
+      }
+    )
+  ] });
+}
+function GemstoneCrystal() {
+  const groupRef = reactExports.useRef(null);
+  const progress = useScrollStore((s) => s.progress);
+  const progressRef = reactExports.useRef(progress);
+  progressRef.current = progress;
+  useFrame(({ clock }) => {
+    if (!groupRef.current) return;
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
+    const t = clock.getElapsedTime();
+    const p = progressRef.current;
+    groupRef.current.rotation.y = t * 0.3 + p * Math.PI * 2;
+    groupRef.current.position.x = -1.8 + Math.sin(t * 0.45) * 0.2;
+    groupRef.current.position.y = Math.cos(t * 0.5) * 0.4;
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("group", { ref: groupRef, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { position: [0, 0.55, 0], children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("coneGeometry", { args: [0.55, 1.1, 6, 1] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "meshStandardMaterial",
+        {
+          color: "#22d3ee",
+          emissive: "#22d3ee",
+          emissiveIntensity: 0.35,
+          transparent: true,
+          opacity: 0.82,
+          metalness: 0.5,
+          roughness: 0.05
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { position: [0, 0.55, 0], children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("coneGeometry", { args: [0.55, 1.1, 6, 1] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "meshStandardMaterial",
+        {
+          color: "#22d3ee",
+          emissive: "#22d3ee",
+          emissiveIntensity: 0.6,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.45
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { position: [0, -0.55, 0], rotation: [Math.PI, 0, 0], children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("coneGeometry", { args: [0.55, 1.1, 6, 1] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "meshStandardMaterial",
+        {
+          color: "#22d3ee",
+          emissive: "#22d3ee",
+          emissiveIntensity: 0.35,
+          transparent: true,
+          opacity: 0.82,
+          metalness: 0.5,
+          roughness: 0.05
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { position: [0, -0.55, 0], rotation: [Math.PI, 0, 0], children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("coneGeometry", { args: [0.55, 1.1, 6, 1] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "meshStandardMaterial",
+        {
+          color: "#22d3ee",
+          emissive: "#22d3ee",
+          emissiveIntensity: 0.6,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.45
+        }
+      )
+    ] })
+  ] });
+}
+function HelixRing() {
+  const ref = reactExports.useRef(null);
+  const progress = useScrollStore((s) => s.progress);
+  const progressRef = reactExports.useRef(progress);
+  progressRef.current = progress;
+  useFrame(({ clock }) => {
+    if (!ref.current) return;
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
+    const t = clock.getElapsedTime();
+    const p = progressRef.current;
+    ref.current.rotation.x = t * 1.2 + p * 2;
+    ref.current.rotation.z = t * 0.4;
+    const pulse = 1 + Math.sin(t * 1.8) * 0.12 + p * 0.3;
+    ref.current.scale.setScalar(pulse);
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { ref, position: [0.5, 1.8, -1], children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("torusGeometry", { args: [0.8, 0.04, 16, 80] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "meshStandardMaterial",
+      {
+        color: "#f97316",
+        emissive: "#f97316",
+        emissiveIntensity: 0.7,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.85
+      }
+    )
+  ] });
+}
+function SectionCanvas({ children }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Canvas,
+    {
+      style: { background: "transparent", pointerEvents: "none" },
+      camera: { position: [0, 0, 4], fov: 50 },
+      gl: { antialias: true, alpha: true },
+      dpr: [1, 1.5],
+      children: /* @__PURE__ */ jsxRuntimeExports.jsxs(reactExports.Suspense, { fallback: null, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("ambientLight", { intensity: 0.2 }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("pointLight", { position: [3, 3, 3], intensity: 3, color: "#f97316" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("pointLight", { position: [-3, -2, 2], intensity: 2, color: "#22d3ee" }),
+        children
+      ] })
+    }
+  );
+}
+function FloatingDNAInner() {
+  const groupRef = reactExports.useRef(null);
+  useFrame(({ clock }) => {
+    if (!groupRef.current) return;
+    groupRef.current.rotation.y = clock.getElapsedTime() * 0.4;
+  });
+  const beads = [];
+  const count = 20;
+  for (let i = 0; i < count; i++) {
+    const t = i / count * Math.PI * 4;
+    const r = 0.6;
+    beads.push({
+      pos: [Math.cos(t) * r, i / count * 3 - 1.5, Math.sin(t) * r],
+      color: i % 2 === 0 ? "#f97316" : "#22d3ee",
+      key: `dna-a-${i}`
+    });
+    beads.push({
+      pos: [
+        Math.cos(t + Math.PI) * r,
+        i / count * 3 - 1.5,
+        Math.sin(t + Math.PI) * r
+      ],
+      color: i % 2 === 0 ? "#22d3ee" : "#f97316",
+      key: `dna-b-${i}`
+    });
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("group", { ref: groupRef, children: beads.map((b) => /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { position: b.pos, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("sphereGeometry", { args: [0.1, 12, 12] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "meshStandardMaterial",
+      {
+        color: b.color,
+        emissive: b.color,
+        emissiveIntensity: 0.5,
+        transparent: true,
+        opacity: 0.8
+      }
+    )
+  ] }, b.key)) });
+}
+function AboutCanvas() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      style: {
+        position: "absolute",
+        right: 0,
+        top: "50%",
+        transform: "translateY(-50%)",
+        width: 240,
+        height: 360,
+        pointerEvents: "none",
+        opacity: 0.55
+      },
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(SectionCanvas, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(FloatingDNAInner, {}) })
+    }
+  );
+}
+function SpinningCubeInner() {
+  const groupRef = reactExports.useRef(null);
+  useFrame(({ clock }) => {
+    if (!groupRef.current) return;
+    const t = clock.getElapsedTime();
+    groupRef.current.rotation.x = t * 0.3;
+    groupRef.current.rotation.y = t * 0.5;
+    groupRef.current.rotation.z = t * 0.2;
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("group", { ref: groupRef, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("boxGeometry", { args: [2, 2, 2] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "meshStandardMaterial",
+        {
+          color: "#22d3ee",
+          emissive: "#22d3ee",
+          emissiveIntensity: 0.4,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.75
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("boxGeometry", { args: [2, 2, 2] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "meshStandardMaterial",
+        {
+          color: "#22d3ee",
+          emissive: "#22d3ee",
+          emissiveIntensity: 0.15,
+          transparent: true,
+          opacity: 0.08
+        }
+      )
+    ] })
+  ] });
+}
+function WhyUsCanvas() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      style: {
+        position: "absolute",
+        left: 0,
+        top: "50%",
+        transform: "translateY(-50%)",
+        width: 260,
+        height: 260,
+        pointerEvents: "none",
+        opacity: 0.5
+      },
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(SectionCanvas, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SpinningCubeInner, {}) })
+    }
+  );
+}
+function GlowingStarInner() {
+  const meshRef = reactExports.useRef(null);
+  useFrame(({ clock }) => {
+    if (!meshRef.current) return;
+    const t = clock.getElapsedTime();
+    meshRef.current.rotation.z = t * 0.25;
+    meshRef.current.rotation.y = t * 0.15;
+    const pulse = 1 + Math.sin(t * 2.2) * 0.12;
+    meshRef.current.scale.setScalar(pulse);
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { ref: meshRef, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("torusKnotGeometry", { args: [0.7, 0.22, 120, 16, 3, 5] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "meshStandardMaterial",
+      {
+        color: "#f97316",
+        emissive: "#f97316",
+        emissiveIntensity: 0.55,
+        metalness: 0.6,
+        roughness: 0.2
+      }
+    )
+  ] });
+}
+function PortfolioCanvas() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      style: {
+        position: "absolute",
+        right: 20,
+        top: "15%",
+        width: 220,
+        height: 220,
+        pointerEvents: "none",
+        opacity: 0.5
+      },
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(SectionCanvas, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(GlowingStarInner, {}) })
+    }
+  );
+}
+function FloatingRingInner() {
+  const meshRef = reactExports.useRef(null);
+  useFrame(({ clock }) => {
+    if (!meshRef.current) return;
+    const t = clock.getElapsedTime();
+    meshRef.current.rotation.x = t * 0.2;
+    meshRef.current.rotation.z = t * 0.12;
+    meshRef.current.position.y = Math.sin(t * 0.6) * 0.25;
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { ref: meshRef, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("torusGeometry", { args: [1.2, 0.1, 20, 80] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "meshStandardMaterial",
+      {
+        color: "#22d3ee",
+        emissive: "#22d3ee",
+        emissiveIntensity: 0.4,
+        metalness: 0.7,
+        roughness: 0.15,
+        transparent: true,
+        opacity: 0.75
+      }
+    )
+  ] });
+}
+function TestimonialsCanvas() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      style: {
+        position: "absolute",
+        left: "50%",
+        transform: "translateX(-50%)",
+        bottom: 20,
+        width: 300,
+        height: 200,
+        pointerEvents: "none",
+        opacity: 0.35
+      },
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(SectionCanvas, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(FloatingRingInner, {}) })
+    }
+  );
+}
+function OrbitalSystemInner() {
+  const groupRef = reactExports.useRef(null);
+  const orbit1Ref = reactExports.useRef(null);
+  const orbit2Ref = reactExports.useRef(null);
+  const orbit3Ref = reactExports.useRef(null);
+  useFrame(({ clock }) => {
+    if (!groupRef.current) return;
+    const t = clock.getElapsedTime();
+    groupRef.current.rotation.y = t * 0.2;
+    if (orbit1Ref.current) {
+      orbit1Ref.current.position.x = Math.cos(t * 1) * 1.1;
+      orbit1Ref.current.position.z = Math.sin(t * 1) * 1.1;
+    }
+    if (orbit2Ref.current) {
+      orbit2Ref.current.position.x = Math.cos(t * 0.65 + Math.PI * 2 / 3) * 1.4;
+      orbit2Ref.current.position.z = Math.sin(t * 0.65 + Math.PI * 2 / 3) * 1.4;
+      orbit2Ref.current.position.y = Math.sin(t * 0.65) * 0.5;
+    }
+    if (orbit3Ref.current) {
+      orbit3Ref.current.position.x = Math.cos(t * 1.35 + Math.PI * 4 / 3) * 0.9;
+      orbit3Ref.current.position.y = Math.cos(t * 1.35) * 0.7;
+      orbit3Ref.current.position.z = Math.sin(t * 1.35 + Math.PI * 4 / 3) * 0.9;
+    }
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("group", { ref: groupRef, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("sphereGeometry", { args: [0.38, 24, 24] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "meshStandardMaterial",
+        {
+          color: "#f97316",
+          emissive: "#f97316",
+          emissiveIntensity: 0.7,
+          metalness: 0.5,
+          roughness: 0.1
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { ref: orbit1Ref, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("sphereGeometry", { args: [0.16, 16, 16] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "meshStandardMaterial",
+        {
+          color: "#22d3ee",
+          emissive: "#22d3ee",
+          emissiveIntensity: 0.5
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { ref: orbit2Ref, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("sphereGeometry", { args: [0.12, 16, 16] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "meshStandardMaterial",
+        {
+          color: "#22d3ee",
+          emissive: "#22d3ee",
+          emissiveIntensity: 0.5
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { ref: orbit3Ref, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("sphereGeometry", { args: [0.1, 16, 16] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "meshStandardMaterial",
+        {
+          color: "#22d3ee",
+          emissive: "#22d3ee",
+          emissiveIntensity: 0.5
+        }
+      )
+    ] })
+  ] });
+}
+function TeamCanvas() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      style: {
+        position: "absolute",
+        right: 20,
+        top: "10%",
+        width: 260,
+        height: 260,
+        pointerEvents: "none",
+        opacity: 0.5
+      },
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(SectionCanvas, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(OrbitalSystemInner, {}) })
+    }
+  );
+}
+function PulsingSphereInner() {
+  const meshRef = reactExports.useRef(null);
+  useFrame(({ clock }) => {
+    if (!meshRef.current) return;
+    meshRef.current.rotation.y = clock.getElapsedTime() * 0.15;
+    meshRef.current.rotation.x = clock.getElapsedTime() * 0.08;
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { ref: meshRef, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("sphereGeometry", { args: [1.3, 64, 64] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      MeshDistortMaterial,
+      {
+        color: "#f97316",
+        emissive: "#22d3ee",
+        emissiveIntensity: 0.25,
+        distort: 0.45,
+        speed: 1.8,
+        transparent: true,
+        opacity: 0.35,
+        metalness: 0.4,
+        roughness: 0.2
+      }
+    )
+  ] });
+}
+function ContactCanvas() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      style: {
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        transform: "translate(-50%, -50%)",
+        width: 340,
+        height: 340,
+        pointerEvents: "none",
+        opacity: 0.3
+      },
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(SectionCanvas, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(PulsingSphereInner, {}) })
+    }
+  );
+}
 const thresholds = {
   some: 0,
   all: 1
@@ -240,111 +806,15 @@ function useInView(ref, { root, margin, amount, once = false, initial = false } 
   }, [root, ref, margin, once, amount]);
   return isInView;
 }
-function IcosahedronMesh() {
-  const meshRef = reactExports.useRef(null);
-  const progress = useScrollStore((s) => s.progress);
-  const progressRef = reactExports.useRef(progress);
-  progressRef.current = progress;
-  useFrame(({ clock }) => {
-    if (!meshRef.current) return;
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-    const t = clock.getElapsedTime();
-    const p = progressRef.current;
-    meshRef.current.rotation.x = t * 0.3 + p * Math.PI;
-    meshRef.current.rotation.y = t * 0.5 + p * Math.PI * 1.5;
-    meshRef.current.position.y = Math.sin(t * 0.7) * 0.3;
-    const scale = 1 + p * 0.4;
-    meshRef.current.scale.setScalar(scale);
-  });
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { ref: meshRef, position: [1.5, 0, 0], children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("icosahedronGeometry", { args: [1.2, 0] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "meshStandardMaterial",
-      {
-        color: "#f97316",
-        emissive: "#f97316",
-        emissiveIntensity: 0.4,
-        wireframe: false,
-        metalness: 0.7,
-        roughness: 0.2
-      }
-    )
-  ] });
-}
-function DodecahedronWireframe() {
-  const groupRef = reactExports.useRef(null);
-  const progress = useScrollStore((s) => s.progress);
-  const progressRef = reactExports.useRef(progress);
-  progressRef.current = progress;
-  useFrame(({ clock }) => {
-    if (!groupRef.current) return;
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-    const t = clock.getElapsedTime();
-    const p = progressRef.current;
-    groupRef.current.rotation.y = -t * 0.25 + p * Math.PI * 2;
-    groupRef.current.rotation.z = t * 0.1;
-    groupRef.current.position.x = -1.8 + Math.sin(t * 0.4) * 0.2;
-    groupRef.current.position.y = Math.cos(t * 0.5) * 0.4;
-  });
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("group", { ref: groupRef, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("dodecahedronGeometry", { args: [1, 0] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "meshStandardMaterial",
-      {
-        color: "#22d3ee",
-        emissive: "#22d3ee",
-        emissiveIntensity: 0.3,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.7
-      }
-    )
-  ] }) });
-}
-function OctahedronAccent() {
-  const ref = reactExports.useRef(null);
-  const progress = useScrollStore((s) => s.progress);
-  const progressRef = reactExports.useRef(progress);
-  progressRef.current = progress;
-  useFrame(({ clock }) => {
-    if (!ref.current) return;
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-    const t = clock.getElapsedTime();
-    const p = progressRef.current;
-    ref.current.rotation.x = t * 0.6 + p * 2;
-    ref.current.rotation.z = t * 0.4;
-    ref.current.position.y = 1.8 + Math.sin(t * 1.1) * 0.2;
-    ref.current.position.x = Math.cos(t * 0.6) * 0.4;
-  });
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("mesh", { ref, position: [0.5, 1.8, -1], children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("octahedronGeometry", { args: [0.45, 0] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "meshStandardMaterial",
-      {
-        color: "#f97316",
-        emissive: "#f97316",
-        emissiveIntensity: 0.6,
-        metalness: 0.9,
-        roughness: 0.1
-      }
-    )
-  ] });
-}
 function HeroScene() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("ambientLight", { intensity: 0.15 }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("pointLight", { position: [4, 4, 4], intensity: 2.5, color: "#f97316" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("pointLight", { position: [-4, -2, 3], intensity: 1.5, color: "#22d3ee" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("pointLight", { position: [0, 6, -2], intensity: 1, color: "#ffffff" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(IcosahedronMesh, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(DodecahedronWireframe, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(OctahedronAccent, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(TorusKnotMesh, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(GemstoneCrystal, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(HelixRing, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ParticleField, { count: 180 })
   ] });
 }
@@ -641,6 +1111,7 @@ function TestimonialsSection() {
       "data-ocid": "testimonials.section",
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 opacity-5", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-0 left-1/4 w-96 h-96 rounded-full bg-secondary blur-[100px]" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(TestimonialsCanvas, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6 relative z-10", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-16", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-display font-medium tracking-widest text-sm uppercase mb-4", children: "Client Stories" }),
@@ -728,6 +1199,7 @@ function ContactSection() {
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary blur-3xl" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-secondary blur-3xl" })
     ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ContactCanvas, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6 relative z-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-16", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-display font-medium tracking-widest text-sm uppercase mb-4", children: "Get In Touch" }),
@@ -1050,55 +1522,58 @@ function HomePage() {
         ]
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "section",
       {
         id: "about",
-        className: "py-32 bg-background relative",
+        className: "py-32 bg-background relative overflow-hidden",
         "data-ocid": "about.section",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid md:grid-cols-2 gap-16 items-center", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { direction: "left", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-display font-medium tracking-widest text-sm uppercase mb-4", children: "About YasinForge" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-4xl md:text-5xl font-display font-bold text-foreground leading-tight mb-6", children: [
-              "Architects of the",
-              " ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gradient-forge", children: "Modern Web" })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground font-body text-lg leading-relaxed mb-6", children: "Founded by Bilal Yasin with over 3 years of specialised Laravel experience, YasinForge has delivered mission-critical platforms for government, fintech, and enterprise clients across three continents." }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground font-body leading-relaxed", children: "From the Lagos State Judiciary Portal to cutting-edge crypto exchanges, we architect systems that handle real load, real security requirements, and real business outcomes — not prototypes." })
-          ] }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { direction: "right", delay: 0.2, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "card-elevated rounded-2xl p-6 flex items-start gap-5", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display font-bold text-2xl text-primary", children: "BY" }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-bold text-foreground text-lg", children: "Bilal Yasin" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary text-sm font-medium mb-2", children: "Founder & Lead Developer" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm", children: "3+ years Laravel · Government portals · Fintech · E-Commerce" })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "card-elevated rounded-2xl p-6 flex items-center gap-4", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-4xl font-display font-bold text-gradient-forge", children: "3+" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-display font-semibold text-foreground", children: "Years of Excellence" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-muted-foreground text-sm", children: "Delivering enterprise-grade solutions" })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-wrap gap-2", children: [
-              "Laravel Specialists",
-              "Fintech Security",
-              "API Integration",
-              "Team Collaboration"
-            ].map((badge) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Badge,
-              {
-                variant: "outline",
-                className: "border-primary/40 text-primary bg-primary/10 font-display",
-                children: badge
-              },
-              badge
-            )) })
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(AboutCanvas, {}),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-6 relative z-10", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid md:grid-cols-2 gap-16 items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { direction: "left", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-display font-medium tracking-widest text-sm uppercase mb-4", children: "About YasinForge" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-4xl md:text-5xl font-display font-bold text-foreground leading-tight mb-6", children: [
+                "Architects of the",
+                " ",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gradient-forge", children: "Modern Web" })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground font-body text-lg leading-relaxed mb-6", children: "Founded by Bilal Yasin with over 3 years of specialised Laravel experience, YasinForge has delivered mission-critical platforms for government, fintech, and enterprise clients across three continents." }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground font-body leading-relaxed", children: "From the Lagos State Judiciary Portal to cutting-edge crypto exchanges, we architect systems that handle real load, real security requirements, and real business outcomes — not prototypes." })
+            ] }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { direction: "right", delay: 0.2, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "card-elevated rounded-2xl p-6 flex items-start gap-5", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display font-bold text-2xl text-primary", children: "BY" }) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-bold text-foreground text-lg", children: "Bilal Yasin" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary text-sm font-medium mb-2", children: "Founder & Lead Developer" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm", children: "3+ years Laravel · Government portals · Fintech · E-Commerce" })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "card-elevated rounded-2xl p-6 flex items-center gap-4", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-4xl font-display font-bold text-gradient-forge", children: "3+" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-display font-semibold text-foreground", children: "Years of Excellence" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-muted-foreground text-sm", children: "Delivering enterprise-grade solutions" })
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-wrap gap-2", children: [
+                "Laravel Specialists",
+                "Fintech Security",
+                "API Integration",
+                "Team Collaboration"
+              ].map((badge) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+                Badge,
+                {
+                  variant: "outline",
+                  className: "border-primary/40 text-primary bg-primary/10 font-display",
+                  children: badge
+                },
+                badge
+              )) })
+            ] }) })
           ] }) })
-        ] }) })
+        ]
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "section-divider" }),
@@ -1110,6 +1585,7 @@ function HomePage() {
         "data-ocid": "why_us.section",
         children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 opacity-5", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary blur-[120px]" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(WhyUsCanvas, {}),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6 relative z-10", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-16", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-display font-medium tracking-widest text-sm uppercase mb-4", children: "Why Choose Us" }),
@@ -1140,9 +1616,9 @@ function HomePage() {
       "section",
       {
         id: "services",
-        className: "py-32 bg-background relative",
+        className: "py-32 bg-background relative overflow-hidden",
         "data-ocid": "services.section",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6", children: [
+        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6 relative z-10", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-16", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-display font-medium tracking-widest text-sm uppercase mb-4", children: "What We Do" }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-4xl md:text-6xl font-display font-bold text-foreground", children: [
@@ -1170,107 +1646,113 @@ function HomePage() {
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "section-divider" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "section",
       {
         id: "portfolio",
-        className: "py-32 bg-muted/20 relative",
+        className: "py-32 bg-muted/20 relative overflow-hidden",
         "data-ocid": "portfolio.section",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-16", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-display font-medium tracking-widest text-sm uppercase mb-4", children: "Our Work" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-4xl md:text-6xl font-display font-bold text-foreground", children: [
-              "Recent ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gradient-forge", children: "Masterpieces" })
-            ] })
-          ] }) }),
-          projectsLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-4 gap-6", children: ["sk1", "sk2", "sk3", "sk4"].map((key, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "div",
-            {
-              className: "card-elevated rounded-2xl overflow-hidden",
-              "data-ocid": `portfolio.loading.${i + 1}`,
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-40 w-full" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5 space-y-3", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-4 w-24" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-5 w-full" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-4 w-3/4" })
-                ] })
-              ]
-            },
-            key
-          )) }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-4 gap-6", children: displayProjects.map((project, index) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-            ProjectCard,
-            {
-              project,
-              index
-            },
-            project.id.toString()
-          )) })
-        ] })
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(PortfolioCanvas, {}),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6 relative z-10", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-16", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-display font-medium tracking-widest text-sm uppercase mb-4", children: "Our Work" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-4xl md:text-6xl font-display font-bold text-foreground", children: [
+                "Recent ",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gradient-forge", children: "Masterpieces" })
+              ] })
+            ] }) }),
+            projectsLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-4 gap-6", children: ["sk1", "sk2", "sk3", "sk4"].map((key, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "div",
+              {
+                className: "card-elevated rounded-2xl overflow-hidden",
+                "data-ocid": `portfolio.loading.${i + 1}`,
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-40 w-full" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5 space-y-3", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-4 w-24" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-5 w-full" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-4 w-3/4" })
+                  ] })
+                ]
+              },
+              key
+            )) }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-4 gap-6", children: displayProjects.map((project, index) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+              ProjectCard,
+              {
+                project,
+                index
+              },
+              project.id.toString()
+            )) })
+          ] })
+        ]
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "section-divider" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(TestimonialsSection, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "section-divider" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "section",
       {
         id: "team",
-        className: "py-32 bg-background relative",
+        className: "py-32 bg-background relative overflow-hidden",
         "data-ocid": "team.section",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-16", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-display font-medium tracking-widest text-sm uppercase mb-4", children: "The Team" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-4xl md:text-6xl font-display font-bold text-foreground", children: [
-              "Meet The ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gradient-forge", children: "Architects" })
-            ] })
-          ] }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto", children: [
-            {
-              initials: "BY",
-              name: "Bilal Yasin",
-              role: "Founder & Lead Developer",
-              accent: "primary"
-            },
-            {
-              initials: "AS",
-              name: "Ahsan Samad",
-              role: "UI/UX Designer",
-              accent: "secondary"
-            },
-            {
-              initials: "AR",
-              name: "Abdul Rehman",
-              role: "Backend Engineer",
-              accent: "primary"
-            },
-            {
-              initials: "MH",
-              name: "Muhammad Huzaifa",
-              role: "Android Developer",
-              accent: "secondary"
-            }
-          ].map((member, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { delay: i * 0.1, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "div",
-            {
-              className: "card-elevated rounded-2xl p-6 text-center group hover:border-primary/50 transition-glow",
-              "data-ocid": `team.item.${i + 1}`,
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "div",
-                  {
-                    className: `w-20 h-20 mx-auto rounded-2xl flex items-center justify-center mb-4 font-display font-bold text-2xl ${member.accent === "primary" ? "bg-gradient-to-br from-primary/30 to-primary/10 border-2 border-primary/40 text-primary group-hover:glow-neon" : "bg-gradient-to-br from-secondary/30 to-secondary/10 border-2 border-secondary/40 text-secondary group-hover:glow-cyan"} transition-smooth`,
-                    children: member.initials
-                  }
-                ),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-bold text-foreground text-lg", children: member.name }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm mt-1", children: member.role })
-              ]
-            }
-          ) }, member.name)) })
-        ] })
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(TeamCanvas, {}),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6 relative z-10", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-16", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-display font-medium tracking-widest text-sm uppercase mb-4", children: "The Team" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-4xl md:text-6xl font-display font-bold text-foreground", children: [
+                "Meet The ",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gradient-forge", children: "Architects" })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto", children: [
+              {
+                initials: "BY",
+                name: "Bilal Yasin",
+                role: "Founder & Lead Developer",
+                accent: "primary"
+              },
+              {
+                initials: "AS",
+                name: "Ahsan Samad",
+                role: "UI/UX Designer",
+                accent: "secondary"
+              },
+              {
+                initials: "AR",
+                name: "Abdul Rehman",
+                role: "Backend Engineer",
+                accent: "primary"
+              },
+              {
+                initials: "MH",
+                name: "Muhammad Huzaifa",
+                role: "Android Developer",
+                accent: "secondary"
+              }
+            ].map((member, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(RevealSection, { delay: i * 0.1, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "div",
+              {
+                className: "card-elevated rounded-2xl p-6 text-center group hover:border-primary/50 transition-glow",
+                "data-ocid": `team.item.${i + 1}`,
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "div",
+                    {
+                      className: `w-20 h-20 mx-auto rounded-2xl flex items-center justify-center mb-4 font-display font-bold text-2xl ${member.accent === "primary" ? "bg-gradient-to-br from-primary/30 to-primary/10 border-2 border-primary/40 text-primary group-hover:glow-neon" : "bg-gradient-to-br from-secondary/30 to-secondary/10 border-2 border-secondary/40 text-secondary group-hover:glow-cyan"} transition-smooth`,
+                      children: member.initials
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-bold text-foreground text-lg", children: member.name }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm mt-1", children: member.role })
+                ]
+              }
+            ) }, member.name)) })
+          ] })
+        ]
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "section-divider" }),

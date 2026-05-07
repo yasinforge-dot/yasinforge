@@ -1,9 +1,9 @@
-import { j as jsxRuntimeExports, r as reactExports, R as React2, d as React, e as useInternetIdentity, b as useNavigate, u as ue } from "./index-D0yZ9B68.js";
-import { h as useIsAdmin, u as useProjects, i as useSubmissions, b as useTestimonials, j as useBlogPosts, k as useAddProject, l as useUpdateProject, m as useDeleteProject, S as Skeleton, n as useDeleteSubmission, B as Badge, o as useAddTestimonial, p as useUpdateTestimonial, q as useDeleteTestimonial, r as useFeatureTestimonial, s as useAddBlogPost, t as useUpdateBlogPost, v as useDeleteBlogPost, w as useFeatureBlogPost } from "./useBackend-CzoG8yy-.js";
-import { c as cn, a as createSlot$1, b as composeRefs, u as useComposedRefs, B as Button, m as motion } from "./proxy-BcgAcmJN.js";
-import { u as useForm } from "./index.esm-D49b5EuF.js";
-import { Q as Quote, S as Star } from "./star-51PYhvQz.js";
-import { B as BookOpen } from "./book-open-BC0noi5b.js";
+import { j as jsxRuntimeExports, r as reactExports, R as React2, d as React, e as useInternetIdentity, b as useNavigate, u as ue } from "./index-Cdk8ITCB.js";
+import { h as useIsAdmin, u as useProjects, i as useSubmissions, b as useTestimonials, j as useBlogPosts, k as useAddProject, l as useUpdateProject, m as useDeleteProject, S as Skeleton, n as useDeleteSubmission, B as Badge, o as useAddTestimonial, p as useUpdateTestimonial, q as useDeleteTestimonial, r as useFeatureTestimonial, s as useAddBlogPost, t as useUpdateBlogPost, v as useDeleteBlogPost, w as useFeatureBlogPost } from "./useBackend-polHKaev.js";
+import { c as cn, a as createSlot$1, b as composeRefs, u as useComposedRefs, B as Button, m as motion } from "./proxy-DTk2W0P-.js";
+import { u as useForm } from "./index.esm-Q7k4iUVc.js";
+import { Q as Quote, S as Star } from "./star-D0idqhvT.js";
+import { B as BookOpen } from "./book-open-C3OZvWhn.js";
 function Input({ className, type, ...props }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     "input",

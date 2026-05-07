@@ -1,9 +1,9 @@
-import { r as reactExports, j as jsxRuntimeExports, L as Link } from "./index-D0yZ9B68.js";
-import { N as Navigation, F as Footer } from "./Navigation-DIE_Fx6h.js";
-import { b as useTestimonials, a as useFeaturedTestimonials, S as Skeleton, B as Badge } from "./useBackend-CzoG8yy-.js";
-import { m as motion, B as Button } from "./proxy-BcgAcmJN.js";
-import { S as Star, Q as Quote } from "./star-51PYhvQz.js";
-import { E as ExternalLink } from "./external-link-AjrMEc8i.js";
+import { r as reactExports, j as jsxRuntimeExports, L as Link } from "./index-Cdk8ITCB.js";
+import { N as Navigation, F as Footer } from "./Navigation-BeRgmhB4.js";
+import { b as useTestimonials, a as useFeaturedTestimonials, S as Skeleton, B as Badge } from "./useBackend-polHKaev.js";
+import { m as motion, B as Button } from "./proxy-DTk2W0P-.js";
+import { S as Star, Q as Quote } from "./star-D0idqhvT.js";
+import { E as ExternalLink } from "./external-link-BzpvSdou.js";
 import "./vanilla-wjP-HMWV.js";
 function StarRating({ rating }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(

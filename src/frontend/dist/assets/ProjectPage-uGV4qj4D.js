@@ -1,10 +1,10 @@
-import { a as useParams, b as useNavigate, r as reactExports, j as jsxRuntimeExports, L as Link } from "./index-D0yZ9B68.js";
-import { e as useProject, B as Badge, S as Skeleton, f as useBlogPostsForProject, g as useTestimonialsForProject } from "./useBackend-CzoG8yy-.js";
-import { m as motion, B as Button } from "./proxy-BcgAcmJN.js";
-import { Z as Zap, L as Layers, a as CodeXml, C as Canvas, M as MessageSquareQuote, u as useFrame, B as BackSide, b as Color } from "./react-three-fiber.esm-oFFQvPzT.js";
-import { A as ArrowLeft } from "./arrow-left-DS0opQrk.js";
-import { B as BookOpen } from "./book-open-BC0noi5b.js";
-import { Q as Quote, S as Star } from "./star-51PYhvQz.js";
+import { a as useParams, b as useNavigate, r as reactExports, j as jsxRuntimeExports, L as Link } from "./index-Cdk8ITCB.js";
+import { e as useProject, B as Badge, S as Skeleton, f as useBlogPostsForProject, g as useTestimonialsForProject } from "./useBackend-polHKaev.js";
+import { m as motion, B as Button } from "./proxy-DTk2W0P-.js";
+import { Z as Zap, L as Layers, a as CodeXml, C as Canvas, b as MessageSquareQuote, u as useFrame, B as BackSide, c as Color } from "./react-three-fiber.esm-CaH0EOX6.js";
+import { A as ArrowLeft } from "./arrow-left-eeMvleno.js";
+import { B as BookOpen } from "./book-open-C3OZvWhn.js";
+import { Q as Quote, S as Star } from "./star-D0idqhvT.js";
 import "./vanilla-wjP-HMWV.js";
 function NeonKnot({ scrollY }) {
   const meshRef = reactExports.useRef(null);

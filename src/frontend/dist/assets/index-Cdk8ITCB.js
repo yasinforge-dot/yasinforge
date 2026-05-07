@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/HomePage-CHYKl3pK.js","assets/Navigation-DIE_Fx6h.js","assets/useBackend-CzoG8yy-.js","assets/proxy-BcgAcmJN.js","assets/vanilla-wjP-HMWV.js","assets/react-three-fiber.esm-oFFQvPzT.js","assets/index.esm-D49b5EuF.js","assets/arrow-right-MsaGTgjp.js","assets/star-51PYhvQz.js","assets/ProjectPage-CC1uY0Ax.js","assets/arrow-left-DS0opQrk.js","assets/book-open-BC0noi5b.js","assets/AdminPage-BcQd0eOj.js","assets/AdminLoginPage-BERoFhJb.js","assets/TestimonialsPage-Du-JziMA.js","assets/external-link-AjrMEc8i.js","assets/BlogPage-B9IlDeTP.js","assets/tag-D5GM9GjY.js","assets/BlogPostPage-DYLzGtnc.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/HomePage-CEdra3RB.js","assets/Navigation-BeRgmhB4.js","assets/useBackend-polHKaev.js","assets/proxy-DTk2W0P-.js","assets/vanilla-wjP-HMWV.js","assets/react-three-fiber.esm-CaH0EOX6.js","assets/index.esm-Q7k4iUVc.js","assets/arrow-right-BswX-xeY.js","assets/star-D0idqhvT.js","assets/ProjectPage-uGV4qj4D.js","assets/arrow-left-eeMvleno.js","assets/book-open-C3OZvWhn.js","assets/AdminPage-DXwIQnEP.js","assets/AdminLoginPage-CAlNsbHP.js","assets/TestimonialsPage-BZe2YnA4.js","assets/external-link-BzpvSdou.js","assets/BlogPage-BiJTU5N7.js","assets/tag-CRynnWqg.js","assets/BlogPostPage-qVcjfn_Z.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -31872,13 +31872,13 @@ function RouterContextProvider({
 function RouterProvider({ router: router2, ...rest }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(RouterContextProvider, { router: router2, ...rest, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Matches, {}) });
 }
-const HomePage = reactExports.lazy(() => __vitePreload(() => import("./HomePage-CHYKl3pK.js"), true ? __vite__mapDeps([0,1,2,3,4,5,6,7,8]) : void 0));
-const ProjectPage = reactExports.lazy(() => __vitePreload(() => import("./ProjectPage-CC1uY0Ax.js"), true ? __vite__mapDeps([9,2,3,5,4,10,11,8]) : void 0));
-const AdminPage = reactExports.lazy(() => __vitePreload(() => import("./AdminPage-BcQd0eOj.js"), true ? __vite__mapDeps([12,2,3,6,8,11]) : void 0));
-const AdminLoginPage = reactExports.lazy(() => __vitePreload(() => import("./AdminLoginPage-BERoFhJb.js"), true ? __vite__mapDeps([13,3]) : void 0));
-const TestimonialsPage = reactExports.lazy(() => __vitePreload(() => import("./TestimonialsPage-Du-JziMA.js"), true ? __vite__mapDeps([14,1,2,3,4,8,15]) : void 0));
-const BlogPage = reactExports.lazy(() => __vitePreload(() => import("./BlogPage-B9IlDeTP.js"), true ? __vite__mapDeps([16,1,2,3,4,11,17,7]) : void 0));
-const BlogPostPage = reactExports.lazy(() => __vitePreload(() => import("./BlogPostPage-DYLzGtnc.js"), true ? __vite__mapDeps([18,1,2,3,4,11,10,17,15]) : void 0));
+const HomePage = reactExports.lazy(() => __vitePreload(() => import("./HomePage-CEdra3RB.js"), true ? __vite__mapDeps([0,1,2,3,4,5,6,7,8]) : void 0));
+const ProjectPage = reactExports.lazy(() => __vitePreload(() => import("./ProjectPage-uGV4qj4D.js"), true ? __vite__mapDeps([9,2,3,5,4,10,11,8]) : void 0));
+const AdminPage = reactExports.lazy(() => __vitePreload(() => import("./AdminPage-DXwIQnEP.js"), true ? __vite__mapDeps([12,2,3,6,8,11]) : void 0));
+const AdminLoginPage = reactExports.lazy(() => __vitePreload(() => import("./AdminLoginPage-CAlNsbHP.js"), true ? __vite__mapDeps([13,3]) : void 0));
+const TestimonialsPage = reactExports.lazy(() => __vitePreload(() => import("./TestimonialsPage-BZe2YnA4.js"), true ? __vite__mapDeps([14,1,2,3,4,8,15]) : void 0));
+const BlogPage = reactExports.lazy(() => __vitePreload(() => import("./BlogPage-BiJTU5N7.js"), true ? __vite__mapDeps([16,1,2,3,4,11,17,7]) : void 0));
+const BlogPostPage = reactExports.lazy(() => __vitePreload(() => import("./BlogPostPage-qVcjfn_Z.js"), true ? __vite__mapDeps([18,1,2,3,4,11,10,17,15]) : void 0));
 const rootRoute = createRootRoute({
   component: () => /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "min-h-screen bg-background" }), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) })
 });

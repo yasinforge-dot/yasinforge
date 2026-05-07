@@ -1,8 +1,16 @@
 import { Layout } from "@/components/Layout";
 import {
+  AboutCanvas,
+  ContactCanvas,
+  GemstoneCrystal,
+  HelixRing,
   ParticleField,
+  PortfolioCanvas,
   ScrollCanvas,
-  ScrollReactive,
+  TeamCanvas,
+  TestimonialsCanvas,
+  TorusKnotMesh,
+  WhyUsCanvas,
 } from "@/components/ScrollCanvas";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -14,10 +22,9 @@ import {
   useSubmitContact,
   useTestimonials,
 } from "@/hooks/useBackend";
-import { useScrollProgress, useScrollStore } from "@/hooks/useScrollProgress";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 import type { Testimonial } from "@/types";
 import type { ContactFormData, Project } from "@/types";
-import { useFrame } from "@react-three/fiber";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -40,122 +47,9 @@ import { motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import type * as THREE from "three";
+import * as THREE from "three";
 
 // ─── 3D Hero Scene Components ────────────────────────────────────────────────
-
-function IcosahedronMesh() {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const progress = useScrollStore((s) => s.progress);
-  const progressRef = useRef(progress);
-  progressRef.current = progress;
-
-  useFrame(({ clock }) => {
-    if (!meshRef.current) return;
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return;
-    }
-    const t = clock.getElapsedTime();
-    const p = progressRef.current;
-    meshRef.current.rotation.x = t * 0.3 + p * Math.PI;
-    meshRef.current.rotation.y = t * 0.5 + p * Math.PI * 1.5;
-    meshRef.current.position.y = Math.sin(t * 0.7) * 0.3;
-    const scale = 1 + p * 0.4;
-    meshRef.current.scale.setScalar(scale);
-  });
-
-  return (
-    <mesh ref={meshRef} position={[1.5, 0, 0]}>
-      <icosahedronGeometry args={[1.2, 0]} />
-      <meshStandardMaterial
-        color="#f97316"
-        emissive="#f97316"
-        emissiveIntensity={0.4}
-        wireframe={false}
-        metalness={0.7}
-        roughness={0.2}
-      />
-    </mesh>
-  );
-}
-
-function DodecahedronWireframe() {
-  const groupRef = useRef<THREE.Group>(null);
-  const progress = useScrollStore((s) => s.progress);
-  const progressRef = useRef(progress);
-  progressRef.current = progress;
-
-  useFrame(({ clock }) => {
-    if (!groupRef.current) return;
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return;
-    }
-    const t = clock.getElapsedTime();
-    const p = progressRef.current;
-    groupRef.current.rotation.y = -t * 0.25 + p * Math.PI * 2;
-    groupRef.current.rotation.z = t * 0.1;
-    groupRef.current.position.x = -1.8 + Math.sin(t * 0.4) * 0.2;
-    groupRef.current.position.y = Math.cos(t * 0.5) * 0.4;
-  });
-
-  return (
-    <group ref={groupRef}>
-      <mesh>
-        <dodecahedronGeometry args={[1.0, 0]} />
-        <meshStandardMaterial
-          color="#22d3ee"
-          emissive="#22d3ee"
-          emissiveIntensity={0.3}
-          wireframe
-          transparent
-          opacity={0.7}
-        />
-      </mesh>
-    </group>
-  );
-}
-
-function OctahedronAccent() {
-  const ref = useRef<THREE.Mesh>(null);
-  const progress = useScrollStore((s) => s.progress);
-  const progressRef = useRef(progress);
-  progressRef.current = progress;
-
-  useFrame(({ clock }) => {
-    if (!ref.current) return;
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return;
-    }
-    const t = clock.getElapsedTime();
-    const p = progressRef.current;
-    ref.current.rotation.x = t * 0.6 + p * 2;
-    ref.current.rotation.z = t * 0.4;
-    ref.current.position.y = 1.8 + Math.sin(t * 1.1) * 0.2;
-    ref.current.position.x = Math.cos(t * 0.6) * 0.4;
-  });
-
-  return (
-    <mesh ref={ref} position={[0.5, 1.8, -1]}>
-      <octahedronGeometry args={[0.45, 0]} />
-      <meshStandardMaterial
-        color="#f97316"
-        emissive="#f97316"
-        emissiveIntensity={0.6}
-        metalness={0.9}
-        roughness={0.1}
-      />
-    </mesh>
-  );
-}
 
 function HeroScene() {
   return (
@@ -164,9 +58,9 @@ function HeroScene() {
       <pointLight position={[4, 4, 4]} intensity={2.5} color="#f97316" />
       <pointLight position={[-4, -2, 3]} intensity={1.5} color="#22d3ee" />
       <pointLight position={[0, 6, -2]} intensity={1} color="#ffffff" />
-      <IcosahedronMesh />
-      <DodecahedronWireframe />
-      <OctahedronAccent />
+      <TorusKnotMesh />
+      <GemstoneCrystal />
+      <HelixRing />
       <ParticleField count={180} />
     </>
   );
@@ -547,6 +441,7 @@ function TestimonialsSection() {
       <div className="absolute inset-0 opacity-5">
         <div className="absolute bottom-0 left-1/4 w-96 h-96 rounded-full bg-secondary blur-[100px]" />
       </div>
+      <TestimonialsCanvas />
       <div className="container mx-auto px-6 relative z-10">
         <RevealSection>
           <div className="text-center mb-16">
@@ -656,6 +551,7 @@ function ContactSection() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-secondary blur-3xl" />
       </div>
+      <ContactCanvas />
       <div className="container mx-auto px-6 relative z-10">
         <RevealSection>
           <div className="text-center mb-16">
@@ -966,10 +862,11 @@ export default function HomePage() {
       {/* ── About Section ────────────────────────────── */}
       <section
         id="about"
-        className="py-32 bg-background relative"
+        className="py-32 bg-background relative overflow-hidden"
         data-ocid="about.section"
       >
-        <div className="container mx-auto px-6">
+        <AboutCanvas />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <RevealSection direction="left">
               <div>
@@ -1067,6 +964,7 @@ export default function HomePage() {
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary blur-[120px]" />
         </div>
+        <WhyUsCanvas />
         <div className="container mx-auto px-6 relative z-10">
           <RevealSection>
             <div className="text-center mb-16">
@@ -1107,10 +1005,10 @@ export default function HomePage() {
       {/* ── Services Section ─────────────────────────── */}
       <section
         id="services"
-        className="py-32 bg-background relative"
+        className="py-32 bg-background relative overflow-hidden"
         data-ocid="services.section"
       >
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 relative z-10">
           <RevealSection>
             <div className="text-center mb-16">
               <p className="text-primary font-display font-medium tracking-widest text-sm uppercase mb-4">
@@ -1153,10 +1051,11 @@ export default function HomePage() {
       {/* ── Portfolio Section ────────────────────────── */}
       <section
         id="portfolio"
-        className="py-32 bg-muted/20 relative"
+        className="py-32 bg-muted/20 relative overflow-hidden"
         data-ocid="portfolio.section"
       >
-        <div className="container mx-auto px-6">
+        <PortfolioCanvas />
+        <div className="container mx-auto px-6 relative z-10">
           <RevealSection>
             <div className="text-center mb-16">
               <p className="text-primary font-display font-medium tracking-widest text-sm uppercase mb-4">
@@ -1208,10 +1107,11 @@ export default function HomePage() {
       {/* ── Team Section ─────────────────────────────── */}
       <section
         id="team"
-        className="py-32 bg-background relative"
+        className="py-32 bg-background relative overflow-hidden"
         data-ocid="team.section"
       >
-        <div className="container mx-auto px-6">
+        <TeamCanvas />
+        <div className="container mx-auto px-6 relative z-10">
           <RevealSection>
             <div className="text-center mb-16">
               <p className="text-primary font-display font-medium tracking-widest text-sm uppercase mb-4">
